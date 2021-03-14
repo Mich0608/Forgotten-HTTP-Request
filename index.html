@@ -79,11 +79,11 @@
 
     <script>
       function random(number) {
-        return Math.floor(Math.random() * (number + 1));
+        return Math.floor(Math.random() * number + 1);
       }
 
       function snowfall() {
-        setTimeout(snowfall, 1000);
+        setTimeout(snowfall, random(1000));
           let snowflake = document.createElement("div");
           snowflake.style.left = `${random(100)}%`;
           document.body.appendChild(snowflake);
