@@ -62,8 +62,8 @@
       background-image: url(brightsnow.png);
       background-size: cover;
       margin-left: -8px;
-      top: 100%;
-      animation: build-snow 30s linear;
+      animation: build-snow 30s linear infinite;
+      z-index: 1;
     }
     
     .from {
@@ -90,6 +90,14 @@
       text-align: center;
       padding-top: 100px;
       font-size: 50px;
+      font-family: Helvetica, Arial, sans-serif;
+      z-index: 0;
+      color: #555;
+      visibility: hidden;
+    }
+    
+    .request:hover ~ .status{
+      visibility: visible;
     }
 
     @keyframes fall {
