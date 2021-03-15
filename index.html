@@ -81,7 +81,7 @@
     .status {
       position: absolute;
       width: 350px;
-      height: 350px;
+      height: 300px;
       top: 50%;
       left: 50%;
       margin-top: -225px;
@@ -89,16 +89,21 @@
       background-image: url(crumpled.jpg);
       background-size: cover;
       text-align: center;
-      padding-top: 100px;
-      font-size: 50px;
+      padding-top: 150px;
+      font-size: 25px;
       font-family: Helvetica, Arial, sans-serif;
       z-index: 0;
-      color: #555;
-      visibility: hidden;
+      color: #000;
+      opacity: 0%;
+    }
+    
+    .status > a {
+      font-size: 50px;
     }
     
     .request:hover ~ .status{
-      visibility: visible;
+      animation: appear 1s;
+      animation-fill-mode: forwards;
     }
 
     @keyframes fall {
@@ -111,9 +116,9 @@
       100% { top: 0%;}
     }
     
-    @keyframes disappear {
-      0% { opacity: 100% }
-      100% { opacity: 0%;}
+    @keyframes appear {
+      0% { opacity: 0%;}
+      100% { opacity: 100%; }
     }
     
   </style>
@@ -131,7 +136,11 @@
     
     <div class="snow"></div>
     
-    <div class="status">410 <br>Gone</div>
+    <div class="status">
+      <a>410</a>
+      <br>
+      The page you requested is gone.
+    </div>
     
   </body>
 
