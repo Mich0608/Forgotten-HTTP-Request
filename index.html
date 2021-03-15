@@ -15,15 +15,14 @@
     .request {
       display: block;
       position: absolute;
-      width: 600px;
+      width: 480px;
       height: 200px;
       top: 50%;
       left: 50%;
       margin-top: -150px;
-      margin-left: -300px;
+      margin-left: -320px;
       background-color: hsl(40, 36%, 100%);
-      text-align: center;
-      padding-top: 120px;
+      padding: 120px 0 0 160px;
       border: solid #ddd 1px;
       box-shadow: 0 0 50px #ccc;
     }
@@ -33,22 +32,24 @@
       display: inline;
       position: absolute;
       width: 110px;
-      height: 60px;
-      top: 20px;
-      left: 470px;
-      background-image: url(snow-on-tree.jpg);
-      background-size: 130%;
-      background-position: 50%;
+      height: 100px;
+      top: 30px;
+      left: 510px;
+      background-image: url(stamp.png);
+      background-size: 70%;
+      background-repeat: no-repeat;
+      transform: rotate(90deg);
     }
 
     .snowflake {
+      visibility: hidden;
       position: absolute;
       height: 10px;
       width: 10px;
       background-image: radial-gradient(white 0%, white 20%, transparent 100%);
       border-radius: 50%;
       box-shadow: 0 0 10px white;
-      animation: fall 10s linear infinite;
+      animation: fall 10s linear;
     }
     
     .snow {
@@ -58,11 +59,22 @@
       background-image: url(brightsnow.png);
       background-size: cover;
       margin-left: -8px;
-      animation: build-snow 50s linear infinite;
+      top: 100%;
+    }
+    
+    .from {
+      position: absolute;
+      display: inline;
+      top: 50%;
+      left: 50%;
+      margin-top: -130px;
+      margin-left: -300px;
+      height: 100px;
+      width: 100px;
     }
 
     @keyframes fall {
-      0% { top: 0%; }
+      0% { top: 0%; visibility: visible}
       100% { top: 100%;}
     }
     
@@ -80,20 +92,39 @@
       Request Method: GET
       <br>
       Status Code: 301 Moved Permanently
-      <br>
-      Remote Address: ###.###.##.##:##
-      <br>
     </div>
 
     <div class="snowflake"></div>
     
-    <div class="snow">
-    </div>
+    <div class="from"></div>
+    
+    <div class="snow"></div>
 
+    <script src="https://netnet.studio/Averigua.js"></script>
     <script>
+  
+      const fromDiv = document.querySelector('.from')
+      const info = Averigua.language()
+      fromDiv.setAttribute('style', 'white-space: pre;')
+      
+      
+      fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      fromDiv.setAttribute('style', 'white-space: pre;')
+      fromDiv.textContent = 
+            `From: 
+${data.ip}
+${info.country}`
+    })
+    .catch(error => {
+      requestDiv.textContent = error
+    })
+      
+    
 
       function snowfall() {
-        setTimeout(snowfall, Math.random() * 1000);
+        setTimeout(snowfall, Math.random() * 500);
           let snowflake = document.createElement("div");
           snowflake.style.left = `${Math.random() * 100 + 1}%`;
           document.body.appendChild(snowflake);
