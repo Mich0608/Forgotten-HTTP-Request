@@ -49,14 +49,14 @@
     .snowflake {
       visibility: hidden;
       position: absolute;
-      height: 10px;
-      width: 10px;
+      height: 13px;
+      width: 13px;
       background-image: radial-gradient(white 0%, white 20%, transparent 100%);
       border-radius: 50%;
       box-shadow: 0 0 10px white;
       animation: fall 10s linear;
     }
-    
+
     .snow {
       position: absolute;
       width: 100%;
@@ -67,7 +67,7 @@
       animation: build-snow 30s linear infinite;
       z-index: 2;
     }
-    
+
     .from {
       position: absolute;
       display: inline;
@@ -79,7 +79,7 @@
       width: 100px;
       z-index: 0;
     }
-    
+
     .status {
       position: absolute;
       width: 350px;
@@ -98,12 +98,12 @@
       color: #000;
       opacity: 0;
     }
-    
-    .status > a {
+
+    .status>a {
       font-size: 50px;
     }
-    
-    .hover{
+
+    .hover {
       display: block;
       position: absolute;
       width: 612px;
@@ -113,27 +113,27 @@
       margin-top: -150px;
       margin-left: -320px;
     }
-    
-    .hover:hover > .status{
+
+    .hover:hover>.status {
       animation: appear 0.1s linear;
       animation-fill-mode: forwards;
     }
 
     @keyframes fall {
-      0% { top: 0%; visibility: visible}
-      100% { top: 100%;}
-    }
-    
-    @keyframes build-snow {
-      0% { top: 100%; }
-      100% { top: 0%;}
-    }
-    
-    @keyframes appear {
-      0% { opacity: 0%; }
-      100% { opacity: 100%;}
+      0% {top: 0%; visibility: visible}
+      100% {top: 100%;}
     }
 
+    @keyframes build-snow {
+      0% {top: 100%;}
+      100% {top: 0%;}
+    }
+
+    @keyframes appear {
+      0% {opacity: 0%;}
+
+      100% {opacity: 100%;}
+    }
   </style>
 
   <body>
@@ -142,9 +142,9 @@
       <br>
       Request Method: GET
     </div>
-    
+
     <div class="from"></div>
-    
+
     <div class="hover">
       <div class="status">
         <a>410</a>
@@ -154,43 +154,41 @@
     </div>
 
     <div class="snowflake"></div>
-    
+
     <div class="snow"></div>
-  
-    
+
+
   </body>
 
-    <script src="https://netnet.studio/Averigua.js"></script>
-    <script>
-  
-      const fromDiv = document.querySelector('.from')
-      const info = Averigua.language()
-      fromDiv.setAttribute('style', 'white-space: pre;')
-      
-      
-      fetch('https://ipapi.co/json/')
-    .then(res => res.json())
-    .then(data => {
-      fromDiv.setAttribute('style', 'white-space: pre;')
-      fromDiv.textContent = 
-            `From: 
+  <script src="https://netnet.studio/Averigua.js"></script>
+  <script>
+    const fromDiv = document.querySelector('.from')
+    const info = Averigua.language()
+    fromDiv.setAttribute('style', 'white-space: pre;')
+
+
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        fromDiv.setAttribute('style', 'white-space: pre;')
+        fromDiv.textContent =
+          `From: 
 ${data.ip} ,
 ${info.country}`
-    })
-    .catch(error => {
-      requestDiv.textContent = error
-    })
-      
-      function snowfall() {
-        setTimeout(snowfall, Math.random() * 500);
-          let snowflake = document.createElement("div");
-          snowflake.style.left = `${Math.random() * 100 + 1}%`;
-          document.body.appendChild(snowflake);
-          snowflake.className = "snowflake";
-      }
-      
-      snowfall();
-      
-    </script>
+      })
+      .catch(error => {
+        requestDiv.textContent = error
+      })
+
+    function snowfall() {
+      setTimeout(snowfall, Math.random() * 500);
+      let snowflake = document.createElement("div");
+      snowflake.style.left = `${Math.random() * 100 + 1}%`;
+      document.body.appendChild(snowflake);
+      snowflake.className = "snowflake";
+    }
+
+    snowfall();
+  </script>
 
 </html>
