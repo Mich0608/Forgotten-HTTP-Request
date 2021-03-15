@@ -29,6 +29,7 @@
       border-radius: 02px;
       background-image: url(texture.png);
       font-size: 19px;
+      z-index: -1;
     }
 
     .request::before {
@@ -64,7 +65,7 @@
       background-size: cover;
       margin-left: -8px;
       animation: build-snow 30s linear infinite;
-      z-index: 1;
+      z-index: 2;
     }
     
     .from {
@@ -76,6 +77,7 @@
       margin-left: -300px;
       height: 100px;
       width: 100px;
+      z-index: 0;
     }
     
     .status {
@@ -94,15 +96,26 @@
       font-family: Helvetica, Arial, sans-serif;
       z-index: 0;
       color: #000;
-      opacity: 0%;
+      opacity: 0;
     }
     
     .status > a {
       font-size: 50px;
     }
     
-    .request:hover ~ .status{
-      animation: appear 1s;
+    .hover{
+      display: block;
+      position: absolute;
+      width: 612px;
+      height: 302px;
+      top: 50%;
+      left: 50%;
+      margin-top: -150px;
+      margin-left: -320px;
+    }
+    
+    .hover:hover > .status{
+      animation: appear 0.1s linear;
       animation-fill-mode: forwards;
     }
 
@@ -117,10 +130,10 @@
     }
     
     @keyframes appear {
-      0% { opacity: 0%;}
-      100% { opacity: 100%; }
+      0% { opacity: 0%; }
+      100% { opacity: 100%;}
     }
-    
+
   </style>
 
   <body>
@@ -131,16 +144,19 @@
     </div>
     
     <div class="from"></div>
+    
+    <div class="hover">
+      <div class="status">
+        <a>410</a>
+        <br>
+        The page you requested is gone.
+      </div>
+    </div>
 
     <div class="snowflake"></div>
     
     <div class="snow"></div>
-    
-    <div class="status">
-      <a>410</a>
-      <br>
-      The page you requested is gone.
-    </div>
+  
     
   </body>
 
