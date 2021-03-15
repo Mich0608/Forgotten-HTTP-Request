@@ -9,14 +9,15 @@
 
   <style>
     body {
+      background-image: url(snowbg.jpg);
       background-color: rgb(0, 0, 55);
     }
 
     .request {
       display: block;
       position: absolute;
-      width: 480px;
-      height: 200px;
+      width: 450px;
+      height: 180px;
       top: 50%;
       left: 50%;
       margin-top: -150px;
@@ -25,6 +26,8 @@
       padding: 120px 0 0 160px;
       border: solid #ddd 1px;
       box-shadow: 0 0 50px #ccc;
+      border-radius: 02px;
+      background-image: url(texture.png);
     }
 
     .request::before {
@@ -34,7 +37,7 @@
       width: 110px;
       height: 100px;
       top: 30px;
-      left: 510px;
+      left: 480px;
       background-image: url(stamp.png);
       background-size: 70%;
       background-repeat: no-repeat;
@@ -60,6 +63,7 @@
       background-size: cover;
       margin-left: -8px;
       top: 100%;
+      animation: build-snow 30s linear;
     }
     
     .from {
@@ -83,6 +87,11 @@
       100% { top: 0%;}
     }
     
+    @keyframes disappear {
+      0% { opacity: 100% }
+      100% { opacity: 0%;}
+    }
+    
   </style>
 
   <body>
@@ -93,12 +102,14 @@
       <br>
       Status Code: 301 Moved Permanently
     </div>
+    
+    <div class="from"></div>
 
     <div class="snowflake"></div>
     
-    <div class="from"></div>
-    
     <div class="snow"></div>
+    
+  </body>
 
     <script src="https://netnet.studio/Averigua.js"></script>
     <script>
@@ -114,15 +125,13 @@
       fromDiv.setAttribute('style', 'white-space: pre;')
       fromDiv.textContent = 
             `From: 
-${data.ip}
+${data.ip} ,
 ${info.country}`
     })
     .catch(error => {
       requestDiv.textContent = error
     })
       
-    
-
       function snowfall() {
         setTimeout(snowfall, Math.random() * 500);
           let snowflake = document.createElement("div");
@@ -134,6 +143,5 @@ ${info.country}`
       snowfall();
       
     </script>
-  </body>
 
 </html>
