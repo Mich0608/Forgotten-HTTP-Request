@@ -9,4 +9,6 @@ I further the theme of magic and loss with the letter itself. I chose to include
 
 With this piece, I aim to explore the sense of nostalgia and loss behind the abstract magic of the Internet.
 
+To view the piece, please use the Chrome browser and click this link: https://mich0608.github.io/Forgotten-HTTP-Request/
+
 ◕ ◞ ◕ This project was made using https://netnet.studio
