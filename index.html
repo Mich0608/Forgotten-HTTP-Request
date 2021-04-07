@@ -22,7 +22,7 @@
       margin-top: -150px;
       margin-left: -320px;
       background-color: hsl(40, 36%, 100%);
-      padding: 120px 0 0 160px;
+      padding: 120px 30px 0 130px;
       border: solid #ddd 1px;
       box-shadow: 0 0 50px #ccc;
       border-radius: 02px;
@@ -44,6 +44,7 @@
       background-repeat: no-repeat;
       transform: rotate(90deg);
     }
+    
 
     .snowflake {
       visibility: hidden;
@@ -130,17 +131,20 @@
 
     @keyframes appear {
       0% {opacity: 0%;}
-
       100% {opacity: 100%;}
     }
+    
   </style>
 
   <body>
     <div class="request">
-      Request URL: http://forgotten.com/
+      Request URL: <a href="http://forgotten-http-request.com">
+         http://forgotten-http-request.com</a>
       <br>
       Request Method: GET
     </div>
+    
+    <audio id="crumple" src="crumple.wav"></audio>
 
     <div class="from"></div>
 
@@ -159,12 +163,8 @@
 
   </body>
 
-  <script src="https://netnet.studio/Averigua.js"></script>
   <script>
     const fromDiv = document.querySelector('.from')
-    const info = Averigua.language()
-    fromDiv.setAttribute('style', 'white-space: pre;')
-
 
     fetch('https://ipapi.co/json/')
       .then(res => res.json())
@@ -172,12 +172,13 @@
         fromDiv.setAttribute('style', 'white-space: pre;')
         fromDiv.textContent =
           `From: 
-${data.ip} ,
-${info.country}`
+${data.ip},
+${data.country_name}`
       })
       .catch(error => {
-        requestDiv.textContent = error
+        fromDiv.textContent = error
       })
+    
 
     function snowfall() {
       setTimeout(snowfall, Math.random() * 500);
@@ -186,8 +187,10 @@ ${info.country}`
       document.body.appendChild(snowflake);
       snowflake.className = "snowflake";
     }
-
+    
     snowfall();
+    
+    
   </script>
 
 </html>
